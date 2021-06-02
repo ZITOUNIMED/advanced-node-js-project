@@ -1,2 +1,2 @@
-node_modules
-.vcode
+/node_modules
+/.vscode

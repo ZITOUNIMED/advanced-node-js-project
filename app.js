@@ -1,8 +1,20 @@
 const http = require('http');
+const express = require('express');
+const bodyParser = require('body-parser');
 
-const server = http.createServer((req, res) => {
-    console.log(req);
+const productsRouter = require('./routes/products');
+
+const app = express();
+
+app.use(bodyParser.urlencoded());
+
+app.use('/products', productsRouter);
+
+app.use('/', (req, res, next) => {
+    res.send('<h1>Hello from express</h1>')
 });
+
+const server = http.createServer(app);
 
 const PORT = 3000;
 
